@@ -1,0 +1,56 @@
+5️⃣ Detalles importantes a tener en cuenta
+
+A. Firestore / Supabase
+Estructura recomendada:
+users/
+    uid/
+        name, photo, email
+lobbys/
+    lobbyId/
+        title, description, price, date, location, members[]
+        chatId
+chats/
+    chatId/
+        messages[]
+Cada lobby crea un documento de chat automáticamente.
+
+B. Estado de asistencia
+Cada miembro del lobby puede tener:
+"status": "presentable" | "maybe" | "absent"
+Se actualiza en tiempo real para todos los integrantes.
+
+C. Pagos
+Al crear un lobby con coste:
+
+Puedes calcular automáticamente el coste por persona:
+
+double costePorPersona = total / numeroDeParticipantes;
+
+Integrar Stripe o PayPal API si quieres pagos reales.
+
+D. Chat
+Firebase Firestore permite:
+Crear colección de mensajes por chatId
+Actualización en tiempo real con StreamBuilder
+
+E. Mapas
+Guardar coordenadas lat y lon en cada lobby
+Al cargar el mapa, generar marcadores dinámicos
+Actualizar en tiempo real si la ubicación de un lobby cambia
+
+F. Buscador
+Firestore / Supabase permiten consultas filtradas:
+Por ciudad, rango de fecha, precio, número de integrantes
+
+6️⃣ Pasos para desarrollar la app
+- Configurar Flutter y Firebase / Supabase
+- Crear autenticación de usuarios
+- Crear modelo de Lobby y CRUD en base de datos
+- Crear pantallas principales: lista de lobbys, detalle de lobby
+- Integrar chat por lobby en tiempo real
+- Integrar mapa con marcadores dinámicos
+- Implementar estado de asistencia por usuario
+- Implementar pagos / coste por persona
+- Añadir buscador y filtros
+- Probar la app en varios dispositivos
+- Optimizar la UI y la UX
